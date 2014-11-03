@@ -2,7 +2,6 @@
 
 use \View;
 use \Str;
-use \URL;
 
 class Crumbs {
 

@@ -22,14 +22,3 @@ if ( !function_exists('toObjects') )
 		return $object;
 	}
 }
-
-if ( !function_exists('crumbs') )
-{
-	/**
-	 * Function renders crumbs.
-	 */
-	function crumbs()
-	{
-		Crumbs::render();
-	}
-}
