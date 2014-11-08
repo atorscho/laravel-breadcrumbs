@@ -1,9 +1,10 @@
 <?php // todo - translate ?>
+
 <ol class="breadcrumb">
 	@if(URL::current() == route('admin.index'))
-        <li class="active">Dashboard</li>
+        <li class="active">{{ getSetting('crumbsHome') ?: 'Dashboard' }}</li>
     @else
-        <li><a href="{{{ route('admin.index') }}}">Dashboard</a></li>
+        <li><a href="{{{ route('admin.index') }}}">{{ getSetting('crumbsHome') ?: 'Dashboard' }}</a></li>
     @endif
 	@if($crumbs)
 		@foreach($crumbs as $crumb)
