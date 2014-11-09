@@ -9,6 +9,12 @@ class Crumbs {
 
 	protected $view = 'crumbs';
 
+	/**
+	 * Add new item to the breadcrumbs list.
+	 *
+	 * @param      $uri
+	 * @param null $title
+	 */
 	public function add( $uri, $title = null )
 	{
 		if ( is_null($title) )
@@ -20,6 +26,11 @@ class Crumbs {
 		];
 	}
 
+	/**
+	 * Return an HTML view for the breadcrumbs.
+	 *
+	 * @return mixed
+	 */
 	public function render()
 	{
 		$crumbs = toObjects($this->crumbs);
