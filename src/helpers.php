@@ -22,3 +22,17 @@ if ( !function_exists('toObjects') )
 		return $object;
 	}
 }
+
+if ( !function_exists('crumbs') )
+{
+	/**
+	 * Recursively convert all nested arrays to objects.
+	 *
+	 * @internal param $array
+	 * @return stdClass
+	 */
+	function crumbs()
+	{
+		return Crumbs::render();
+	}
+}
