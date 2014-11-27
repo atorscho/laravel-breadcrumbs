@@ -1,33 +1,46 @@
 <?php namespace Atorscho\Crumbs;
 
-use \View;
-use \Str;
+use View;
 
 class Crumbs {
 
+	/**
+	 * Breadcrumbs list.
+	 *
+	 * @var array
+	 */
 	protected $crumbs = [ ];
 
-	protected $view = 'crumbs';
-
 	/**
-	 * Add new item to the breadcrumbs list.
+	 * Add new link to the breadcrumbs list.
 	 *
 	 * @param      $uri
 	 * @param null $title
 	 */
-	public function add( $uri, $title = null )
+	public function add( $uri, $title )
 	{
-		if ( is_null($title) )
-			$title = Str::title($uri);
-
 		$this->crumbs[] = [
 			'title' => $title,
 			'uri'   => $uri
 		];
 	}
 
+
 	/**
-	 * Return an HTML view for the breadcrumbs.
+	 * Add new route link to the breadcrumbs list.
+	 *
+	 * @param       $route        Route
+	 * @param       $title
+	 * @param array $parameters
+	 */
+	public function addRoute( $route, $title, $parameters = array() )
+	{
+		$this->add(route($route, $parameters), $title);
+	}
+
+
+	/**
+	 * Return an HTML for breadcrumbs to insert to a view.
 	 *
 	 * @return mixed
 	 */
