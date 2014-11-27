@@ -24,7 +24,7 @@ In `src` folder you may find a `helpers.php` file which has two helper functions
 
 > `crumbs()`: A function that replaces `Crumbs::render()` to print Crumbs HTML to the view.
 
-## How to?
+## How to Use?
 This is a sample Controller function.
 
 	// file: controllers/UserController.php
