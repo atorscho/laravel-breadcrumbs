@@ -22,7 +22,7 @@ In `src` folder you may find a `helpers.php` file which has two helper functions
 
 > `toObjects()`: A function I often use. It simply converts all nested arrays to `stdClass` objects.
 
-> `crumbs()`: A function that replaces use of `Crumbs::render()` to print Crumbs HTML to the view.
+> `crumbs()`: A function that replaces `Crumbs::render()` to print Crumbs HTML to the view.
 
 ## How to?
 This is a sample Controller function.
@@ -49,6 +49,6 @@ I do this:
 	
 	<h1>About {{{ $user->username }}}</h1>
 
-I use `function_exists()` in case I do not have `Crumbs` installed, just to be sure that nothing will be broken.
+I use `function_exists()` in case I do not have Crumbs installed, just to be sure that nothing will be broken.
 
 That's all!
