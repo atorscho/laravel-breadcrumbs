@@ -14,7 +14,7 @@ class Crumbs {
 	/**
 	 * Add new link to the breadcrumbs list.
 	 *
-	 * @param      $uri
+	 * @param string $uri
 	 * @param null $title
 	 */
 	public function add( $uri, $title )
@@ -29,9 +29,9 @@ class Crumbs {
 	/**
 	 * Add new route link to the breadcrumbs list.
 	 *
-	 * @param       $route        Route
-	 * @param       $title
-	 * @param array $parameters
+	 * @param string $route
+	 * @param string $title
+	 * @param array  $parameters
 	 */
 	public function addRoute( $route, $title, $parameters = array() )
 	{
