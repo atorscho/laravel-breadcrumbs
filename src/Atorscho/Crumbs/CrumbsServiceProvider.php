@@ -1,5 +1,6 @@
 <?php namespace Atorscho\Crumbs;
 
+use Blade;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +43,14 @@ class CrumbsServiceProvider extends ServiceProvider {
 		{
 			$loader = AliasLoader::getInstance();
 			$loader->alias('Crumbs', 'Atorscho\Crumbs\Facades\Crumbs');
+		});
+
+		// Extending Blade with new 'crumbs' directive
+		Blade::extend(function($view, $compiler)
+		{
+			$pattern = $compiler->createPlainMatcher('crumbs');
+
+			return preg_replace($pattern, "$1<?php echo (function_exists('crumbs')) ? Crumbs::render() : ''; ?>$2", $view);
 		});
 	}
 

@@ -25,7 +25,6 @@ class Crumbs {
 		];
 	}
 
-
 	/**
 	 * Add new route link to the breadcrumbs list.
 	 *
@@ -37,7 +36,6 @@ class Crumbs {
 	{
 		$this->add(route($route, $parameters), $title);
 	}
-
 
 	/**
 	 * Return an HTML for breadcrumbs to insert to a view.
