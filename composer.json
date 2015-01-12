@@ -1,7 +1,6 @@
 {
     "name": "atorscho/crumbs",
     "description": "Simple breadcrumbs package for your Laravel project.",
-	"version": "1.0.0",
 	"keywords": ["breadcrumbs", "crumbs", "navigation", "laravel"],
 	"time": "2014-11-27",
 	"license": "MIT",
