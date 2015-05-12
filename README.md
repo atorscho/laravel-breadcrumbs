@@ -36,9 +36,9 @@ This is a sample Controller method.
 
 public function show( User $user )
 {
-	Crumbs::add(route('users.index'), 'Users');					// Crumbs::add($uri, $title)
-	Crumbs::addRoute('users.show', 'Field Groups', $user->id);	// Crumbs::add(route, $title, $parameters = array())
-		
+    Crumbs::add(route('users.index'), 'Users');
+    Crumbs::addRoute('users.show', $user->username, $user->id);
+
     return View::make('users.show', compact('user'));
 }
 ```
