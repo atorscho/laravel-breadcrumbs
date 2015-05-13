@@ -1,6 +1,7 @@
 <?php namespace Atorscho\Crumbs;
 
 use Atorscho\Crumbs\Exceptions\PropertyNotFoundException;
+use Illuminate\Routing\UrlGenerator;
 use URL;
 
 class CrumbsItem {
@@ -8,28 +9,35 @@ class CrumbsItem {
 	/**
 	 * @var string
 	 */
-	protected $title;
+	protected $url;
 
 	/**
 	 * @var string
 	 */
-	protected $url;
+	protected $title;
 
 	/**
-	 * @param string $url
-	 * @param string $title
+	 * @var UrlGenerator
 	 */
-	public function __construct( $url, $title )
+	protected $routing;
+
+	/**
+	 * @param string       $url
+	 * @param string       $title
+	 * @param UrlGenerator $routing
+	 */
+	public function __construct( $url, $title, UrlGenerator $routing )
 	{
-		$this->title = $title;
-		$this->url   = $url;
+		$this->url     = $url;
+		$this->title   = $title;
+		$this->routing = $routing;
 	}
 
 	/**
 	 * Return current crumb item class name when needed.
 	 *
 	 * @param bool $attr If true, it will return `class="active"`.
-	 * 
+	 *
 	 * @return string
 	 */
 	public function active($attr = true)

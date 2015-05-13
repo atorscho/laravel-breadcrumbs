@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
+use Illuminate\Routing\UrlGenerator;
 
 class Crumbs {
 
@@ -15,7 +16,12 @@ class Crumbs {
 	/**
 	 * @var Router
 	 */
-	protected $route;
+	protected $router;
+
+	/**
+	 * @var UrlGenerator
+	 */
+	protected $url;
 
 	/**
 	 * @var Request
@@ -23,13 +29,15 @@ class Crumbs {
 	protected $request;
 
 	/**
-	 * @param Router  $route
-	 * @param Request $request
+	 * @param Request      $request
+	 * @param Router       $route
+	 * @param UrlGenerator $url
 	 */
-	public function __construct( Router $route, Request $request )
+	public function __construct( Request $request, Router $route, UrlGenerator $url )
 	{
-		$this->route   = $route;
 		$this->request = $request;
+		$this->route   = $route;
+		$this->url     = $url;
 
 		$this->autoAddItems();
 	}
@@ -45,7 +53,7 @@ class Crumbs {
 	{
 		$url = $this->evaluateLink($url, $parameters);
 
-		$this->crumbs[] = new CrumbsItem($url, $title);
+		$this->crumbs[] = new CrumbsItem($url, $title, $this->url);
 	}
 
 	/**
@@ -55,7 +63,7 @@ class Crumbs {
 	 */
 	public function addCurrent( $title )
 	{
-		$this->add($this->route->current()->uri(), $title);
+		$this->add($this->url->current(), $title);
 	}
 
 	/**
