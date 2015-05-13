@@ -14,7 +14,7 @@ return [
 	| Default: crumbs::crumbs-bootstrap3
 	|
 	*/
-	'crumbsView'       => 'crumbs::crumbs-bootstrap3',
+	'crumbsView' => 'crumbs::crumbs-semanticui',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -38,12 +38,12 @@ return [
 	| Admin pattern is used to show its breadcrumb only when needed.
 	|
 	*/
-	'homeTitle'        => 'Home',
+	'homeTitle'        => 'Homepage',
 	'homeUrl'          => 'home',
 
 	'adminTitle'       => 'Admin',
 	'adminUrl'         => 'admin.index',
-	'adminPattern'     => 'admin/*',
+	'adminPattern'     => 'admin*',
 
 	/*
 	|--------------------------------------------------------------------------
