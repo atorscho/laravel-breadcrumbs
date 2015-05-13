@@ -13,7 +13,7 @@ Simple and functional breadcrumbs package for Laravel 5.
 To install Crumbs, you must add a new dependency to your root `composer.json` file:
 
 ```json
-"atorscho/crumbs": "^1.2"
+"atorscho/crumbs": "^2.0"
 ```
 
 ### Service Provider
