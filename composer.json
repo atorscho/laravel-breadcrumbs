@@ -1,8 +1,9 @@
 {
     "name": "atorscho/crumbs",
-    "description": "Simple breadcrumbs package for your Laravel project.",
-	"keywords": ["breadcrumbs", "crumbs", "navigation", "laravel"],
-	"license": "MIT",
+    "description": "Breadcrumbs package for Laravel 5.",
+    "keywords": ["breadcrumbs", "crumbs", "navigation", "laravel"],
+    "type": "package",
+    "license": "MIT",
     "authors": [
         {
             "name": "Alex Torscho",
@@ -11,10 +12,14 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.0.*"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "~2.1",
+        "benconstable/phpspec-laravel": "~2.0"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Atorscho\\Crumbs\\": "src/"
         }
     },

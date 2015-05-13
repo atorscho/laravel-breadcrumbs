@@ -1,62 +1,159 @@
 # Crumbs
+
 ![Latest Stable Version](https://img.shields.io/github/release/atorscho/crumbs.svg)
 
-This is a simple breadcrumbs package for Laravel Framework.
+Simple and functional breadcrumbs package for Laravel 5.
 
-#### Installation
-To install, just add new dependency to your `composer.json` file in root of your project:
+> [v1 branch](https://github.com/atorscho/crumbs/tree/v1) is for Laravel 4.
+
+## Installation
+
+### Composer
+
+To install Crumbs, you must add a new dependency to your root `composer.json` file:
 
 ```json
-"atorscho/crumbs": "1.0.*"
+"atorscho/crumbs": "^1.2"
 ```
 
-And of course do not forget to add new Service Provider to `/app/config/app.php`:
+### Service Provider
+
+Now add new Service Provider to your `providers` array in `/config/app.php`:
 
 ```php
 'Atorscho\Crumbs\CrumbsServiceProvider`,
 ```
 
-#### Configurations
-The package contains only one configuration for now: the home link (by default: Dashboard).
+### Configurations
 
-If you want to change it, just run `php artisan config:publish atorscho/crumbs` and go to `/app/config/packages/atorscho/crumbs/config.php`.
+In order to copy Crumbs' configuration file `crumbs.php` to your `/config` directory, you must run artisan command:
 
-#### Helper Functions
-In `src` folder you may find a `helpers.php` file which has two helper functions: `toObjects()` and `crumbs()`.
+```
+php artisan vendor:publish
+```
 
-> `toObjects()`: A function I often use. It simply converts all nested arrays to `stdClass` objects.
+I advice you to view the configuration file in order to modify the breadcrumbs if needed. Every config is nicely commented.
 
-> `crumbs()`: A function that replaces `Crumbs::render()` to print Crumbs HTML to the view.
+## How to Use
 
-## How to Use?
-This is a sample Controller method.
+Let's assume we have a simple Controller method:
 
 ```php
-// file: controllers/UserController.php
-
 public function show( User $user )
 {
-    Crumbs::add(route('users.index'), 'Users');
-    Crumbs::addRoute('users.show', $user->username, $user->id);
-
-    return View::make('users.show', compact('user'));
+    return view('users.show', compact('user'));
 }
 ```
 
-Now the only thing you need to do is put `crumbs()` where you want the breadcrumbs to render.
+We want now to have a breadcrumb list like this:
 
-I do this:
-
-```php
-// file: views/users/show.blade.php
-
-@if( function_exists('crumbs') )
-	{{ crumbs() }}
-@endif
-	
-<h1>About {{{ $user->username }}}</h1>
+```
+Home > Users > {username}'s Profile
 ```
 
-I use `function_exists()` in case I do not have Crumbs installed, just to be sure that nothing will be broken.
+To achieve this result we call to `add( $url, $title, $parameters = [] )` method.
 
-That's all!
+```php
+public function show( User $user )
+{
+	Crumbs::add('/users', 'Users');
+	Crumbs::add('/users/{username}', "{$user->username}'s Profile", $user->username);
+
+    return view('users.show', compact('user'));
+}
+```
+
+If you prefer route names, you may replace the links with respective names:
+
+```php
+public function show( User $user )
+{
+	Crumbs::add('users.index', 'Users');
+	Crumbs::add('users.show', "{$user->username}'s Profile", $user->username);
+
+    return view('users.show', compact('user'));
+}
+```
+
+You may also simplify the last (active) breadcrumb section with `addCurrent( $title )`:
+
+```php
+public function show( User $user )
+{
+	Crumbs::add('users.index', 'Users');
+	Crumbs::addCurrent("{$user->username}'s Profile");
+
+    return view('users.show', compact('user'));
+}
+```
+
+## API
+
+Documentation for most improtant methods.
+
+### `Crumbs` Class
+---
+
+Add new item to the breadcrumbs.
+
+As first parameter you may pass a relative (`/users/create`) or absolute (`http://example`) link, or a route name (`users.edit`).
+
+```php
+public function add( $url, $title, $parameters = [ ] );
+```
+
+---
+
+Add current page to the breadcrumbs using an active class (see config file) by specifying only its title.
+
+```php
+public function addCurrent( $title );
+```
+
+---
+
+Manually add home and/or admin pages to the breadcrumbs.
+
+```php
+public function addHomePage();
+
+public function addAdminPage();
+```
+
+---
+
+Output resulted breadcrumbs HTML.
+
+```php
+public function render();
+```
+
+---
+
+Get first and last items of the breadcrumbs array.
+
+```php
+
+public function getFirstItem();
+
+public function getLastItem();
+```
+
+### `CrumbsItem` Class
+---
+
+If $attr is true, it will return `class="active"` (the `active` class may be modified in config file).
+
+If $attr is false, it will simply return the `currentItemClass` config value.
+
+```php
+public function active($attr = true);
+```
+
+---
+
+Returns true if an item is the current page.
+
+```php
+public function isActive();
+```

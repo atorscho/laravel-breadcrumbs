@@ -1,8 +1,8 @@
-<?php namespace Atorscho\Crumbs\Facades;
+<?php namespace Atorscho\Crumbs;
 
 use Illuminate\Support\Facades\Facade;
 
-class Crumbs extends Facade {
+class CrumbsFacade extends Facade {
 
 	/**
 	 * Get the registered name of the component.
@@ -15,4 +15,3 @@ class Crumbs extends Facade {
 	}
 
 }
-
