@@ -13,8 +13,6 @@ class CrumbsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		require __DIR__ . '/../vendor/autoload.php';
-
 		// Load Views
 		$this->loadViewsFrom(__DIR__ . '/../resources/views', 'crumbs');
 		$this->publishes([
