@@ -13,15 +13,17 @@ Simple and functional breadcrumbs package for Laravel 5.
 To install Crumbs, you must add a new dependency to your root `composer.json` file:
 
 ```json
-"atorscho/crumbs": "^2.0"
+"atorscho/crumbs": "^2.1"
 ```
+
+`"^2.0"` for Laravel 5.0, `"^1.0"` for Laravel 4.2.
 
 ### Service Provider
 
 Now add new Service Provider to your `providers` array in `/config/app.php`:
 
 ```php
-'Atorscho\Crumbs\CrumbsServiceProvider`,
+Atorscho\Crumbs\CrumbsServiceProvider::class,
 ```
 
 ### Configurations
@@ -29,7 +31,7 @@ Now add new Service Provider to your `providers` array in `/config/app.php`:
 In order to copy Crumbs' configuration file `crumbs.php` to your `/config` directory, you must run artisan command:
 
 ```
-php artisan vendor:publish
+php artisan vendor:publish --provider="Atorscho\Crumbs\CrumbsServiceProvider" --tag="config"
 ```
 
 I advice you to view the configuration file in order to modify the breadcrumbs if needed. Every config is nicely commented.
@@ -39,7 +41,7 @@ I advice you to view the configuration file in order to modify the breadcrumbs i
 Let's assume we have a simple Controller method:
 
 ```php
-public function show( User $user )
+public function show(User $user)
 {
     return view('users.show', compact('user'));
 }
@@ -54,7 +56,7 @@ Home > Users > {username}'s Profile
 To achieve this result we call to `add( $url, $title, $parameters = [] )` method.
 
 ```php
-public function show( User $user )
+public function show(User $user)
 {
 	Crumbs::add('/users', 'Users');
 	Crumbs::add('/users/{username}', "{$user->username}'s Profile", $user->username);
@@ -66,7 +68,7 @@ public function show( User $user )
 If you prefer route names, you may replace the links with respective names:
 
 ```php
-public function show( User $user )
+public function show(User $user)
 {
 	Crumbs::add('users.index', 'Users');
 	Crumbs::add('users.show', "{$user->username}'s Profile", $user->username);
@@ -78,7 +80,7 @@ public function show( User $user )
 You may also simplify the last (active) breadcrumb section with `addCurrent( $title )`:
 
 ```php
-public function show( User $user )
+public function show(User $user)
 {
 	Crumbs::add('users.index', 'Users');
 	Crumbs::addCurrent("{$user->username}'s Profile");

@@ -1,3 +1,5 @@
 <?php namespace Atorscho\Crumbs\Exceptions;
 
-class PropertyNotFoundException extends \Exception {}
+class PropertyNotFoundException extends \Exception
+{
+}

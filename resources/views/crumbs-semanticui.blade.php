@@ -4,7 +4,7 @@
 			<div class="{!! $crumb->active(false) !!} section">{{ $crumb->title }}</div>
 		@else
 			<a class="section" href="{{ $crumb->url }}">{{ $crumb->title }}</a>
-			<div class="divider"> / </div>
+			<div class="divider"> /</div>
 		@endif
 	@endforeach
 </div>
