@@ -89,6 +89,14 @@ public function show(User $user)
 }
 ```
 
+To output generated breadcrumbs into your blade template, simply use new custom Blade `crumbs` directive:
+
+```html
+@crumbs
+
+<h1>Welcome!</h1>
+```
+
 ## API
 
 Documentation for most improtant methods.
