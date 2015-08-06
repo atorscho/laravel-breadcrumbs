@@ -3,7 +3,6 @@ preset: psr2
 enabled:
   - align_double_arrow
   - align_equals
-  - encoding
   - ereg_to_preg
   - extra_empty_lines
   - join_function
