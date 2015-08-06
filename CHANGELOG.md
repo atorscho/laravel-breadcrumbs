@@ -6,12 +6,11 @@ All Notable changes to `crumbs` will be documented in this file.
 
 ### Added
 - Support for configuration localizations.
-
-### Deprecated
-- Nothing
+- StyleCI support.
 
 ### Fixed
 - Problem with localized strings in config file.
+- Bug detecting admin pages if URL has some prefixes (for example '/en/admin').
 
 ### Removed
 - Nothing

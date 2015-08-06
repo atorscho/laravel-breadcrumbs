@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'crumbsView'       => 'crumbs::crumbs-semanticui',
+    'crumbsView' => 'crumbs::crumbs-semanticui',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,11 +41,11 @@ return [
     |
     */
 
-    'homeTitle'        => 'Home',
-    'homeUrl'          => 'home',
-    'adminTitle'       => 'Admin',
-    'adminUrl'         => 'admin.index',
-    'adminPattern'     => 'admin*',
+    'homeTitle'    => 'Home',
+    'homeUrl'      => 'home',
+    'adminTitle'   => 'Admin',
+    'adminUrl'     => 'admin.index',
+    'adminPattern' => '*admin*',
 
     /*
     |--------------------------------------------------------------------------

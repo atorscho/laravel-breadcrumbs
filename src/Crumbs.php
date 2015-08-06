@@ -192,6 +192,7 @@ class Crumbs
     {
         if (config('crumbs.displayBothPages')) {
             $this->addHomePage();
+
             if ($this->request->is(config('crumbs.adminPattern'))) {
                 $this->addAdminPage();
             }
@@ -218,15 +219,12 @@ class Crumbs
      */
     protected function parseConfigLocalization($string)
     {
-        $title   = config('crumbs.homeTitle');
         $pattern = '/^\{(.+)\}$/';
 
-        if (preg_match($pattern, $title)) {
-            $title = trans(preg_replace($pattern, '$1', $title));
-
-            return $title;
+        if (preg_match($pattern, $string)) {
+            $string = trans(preg_replace($pattern, '$1', $string));
         }
 
-        return $title;
+        return $string;
     }
 }
