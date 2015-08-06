@@ -5,7 +5,7 @@ All Notable changes to `crumbs` will be documented in this file.
 ## 2.1.3
 
 ### Added
-- PHPSpec tests.
+- PhpSpec tests.
 
 ### Replaced
 - Calls to `config()` helper function replaced with relevant class method call for better unit testing.
