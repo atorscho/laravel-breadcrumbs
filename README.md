@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Total Downloads][ico-downloads]][link-downloads]
-[![StyleCI][ico-styleci]](https://styleci.io/repos/3948501)
+[![StyleCI][ico-styleci]][link-styleci]
 [![Software License][ico-license]](LICENSE.md)
 
 Simple and functional breadcrumbs package for Laravel 5.
@@ -199,5 +199,6 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-packagist]: https://packagist.org/packages/atorscho/crumbs
 [link-downloads]: https://packagist.org/packages/atorscho/crumbs
+[link-styleci]: https://styleci.io/repos/26128680
 [link-author]: https://github.com/atorscho
 [link-contributors]: ../../contributors
