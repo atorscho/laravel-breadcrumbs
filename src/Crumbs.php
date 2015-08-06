@@ -2,9 +2,11 @@
 
 namespace Atorscho\Crumbs;
 
+use Illuminate\Config\Repository as Config;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 use Illuminate\Routing\UrlGenerator;
+use Illuminate\Translation\Translator;
 
 class Crumbs
 {
@@ -29,17 +31,29 @@ class Crumbs
      * @var Request
      */
     protected $request;
+    /**
+     * @var Config
+     */
+    private $config;
+    /**
+     * @var Translator
+     */
+    private $translator;
 
     /**
      * @param Request      $request
      * @param Router       $route
      * @param UrlGenerator $url
+     * @param Config       $config
+     * @param Translator   $translator
      */
-    public function __construct(Request $request, Router $route, UrlGenerator $url)
+    public function __construct(Request $request, Router $route, UrlGenerator $url, Config $config, Translator $translator)
     {
-        $this->request = $request;
-        $this->route   = $route;
-        $this->url     = $url;
+        $this->request    = $request;
+        $this->route      = $route;
+        $this->url        = $url;
+        $this->config     = $config;
+        $this->translator = $translator;
 
         $this->autoAddItems();
     }
@@ -55,7 +69,7 @@ class Crumbs
     {
         $url = $this->parseUrl($url, $parameters);
 
-        $this->crumbs[] = new CrumbsItem($url, $title, $this->url);
+        $this->crumbs[] = new CrumbsItem($url, $title, $this->url, $this->config);
     }
 
     /**
@@ -75,7 +89,7 @@ class Crumbs
      */
     public function addHomePage()
     {
-        $this->add(config('crumbs.homeUrl'), $this->parseConfigLocalization(config('crumbs.homeTitle')));
+        $this->add($this->config->get('crumbs.homeUrl'), $this->parseConfigLocalization($this->config->get('crumbs.homeTitle')));
     }
 
     /**
@@ -85,7 +99,7 @@ class Crumbs
      */
     public function addAdminPage()
     {
-        $this->add(config('crumbs.adminUrl'), $this->parseConfigLocalization(config('crumbs.adminTitle')));
+        $this->add($this->config->get('crumbs.adminUrl'), $this->parseConfigLocalization($this->config->get('crumbs.adminTitle')));
     }
 
     /**
@@ -99,7 +113,7 @@ class Crumbs
             return false;
         }
 
-        return view(config('crumbs.crumbsView'), ['crumbs' => $this->crumbs])->render();
+        return view($this->config->get('crumbs.crumbsView'), ['crumbs' => $this->getCrumbs()])->render();
     }
 
     /**
@@ -109,7 +123,7 @@ class Crumbs
      */
     public function getFirstItem()
     {
-        return $this->hasCrumbs() ? $this->crumbs[0] : false;
+        return $this->hasCrumbs() ? $this->getCrumbs()[0] : false;
     }
 
     /**
@@ -119,7 +133,7 @@ class Crumbs
      */
     public function getLastItem()
     {
-        return $this->hasCrumbs() ? end($this->crumbs) : false;
+        return $this->hasCrumbs() ? end($this->getCrumbs()) : false;
     }
 
     /**
@@ -139,7 +153,7 @@ class Crumbs
      */
     protected function hasCrumbs()
     {
-        return (bool) $this->crumbs && $this->hasManyItems();
+        return (bool) $this->getCrumbs() && $this->hasManyItems();
     }
 
     /**
@@ -149,7 +163,7 @@ class Crumbs
      */
     protected function hasItems()
     {
-        return (bool) count($this->crumbs);
+        return (bool) count($this->getCrumbs());
     }
 
     /**
@@ -159,7 +173,7 @@ class Crumbs
      */
     protected function hasManyItems()
     {
-        return count($this->crumbs) > 1;
+        return count($this->getCrumbs()) > 1;
     }
 
     /**
@@ -174,10 +188,9 @@ class Crumbs
     {
         // If provided $url is a route name...
         if ($this->route->has($url)) {
-            $url = route($url, $parameters);
-        } // Or an absolute link.
-        elseif (!preg_match('/^(?:\w+:)?\/\//', $url)) {
-            $url = url($url, $parameters);
+            $url = $this->url->route($url, $parameters);
+        } else {
+            $url = $this->url->to($url, $parameters);
         }
 
         return $url;
@@ -190,17 +203,17 @@ class Crumbs
      */
     protected function autoAddItems()
     {
-        if (config('crumbs.displayBothPages')) {
+        if ($this->config->get('crumbs.displayBothPages')) {
             $this->addHomePage();
 
-            if ($this->request->is(config('crumbs.adminPattern'))) {
+            if ($this->request->is($this->config->get('crumbs.adminPattern'))) {
                 $this->addAdminPage();
             }
         } else {
-            if (config('crumbs.displayHomePage') && !$this->request->is(config('crumbs.adminPattern'))) {
+            if ($this->config->get('crumbs.displayHomePage') && !$this->request->is($this->config->get('crumbs.adminPattern'))) {
                 $this->addHomePage();
             }
-            if (config('crumbs.displayAdminPage') && $this->request->is(config('crumbs.adminPattern'))) {
+            if ($this->config->get('crumbs.displayAdminPage') && $this->request->is($this->config->get('crumbs.adminPattern'))) {
                 $this->addAdminPage();
             }
         }
@@ -222,7 +235,7 @@ class Crumbs
         $pattern = '/^\{(.+)\}$/';
 
         if (preg_match($pattern, $string)) {
-            $string = trans(preg_replace($pattern, '$1', $string));
+            $string = $this->translator->trans(preg_replace($pattern, '$1', $string));
         }
 
         return $string;

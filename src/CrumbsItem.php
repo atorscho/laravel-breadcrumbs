@@ -3,8 +3,8 @@
 namespace Atorscho\Crumbs;
 
 use Atorscho\Crumbs\Exceptions\PropertyNotFoundException;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Routing\UrlGenerator;
-use URL;
 
 class CrumbsItem
 {
@@ -24,15 +24,22 @@ class CrumbsItem
     protected $routing;
 
     /**
+     * @var Config
+     */
+    protected $config;
+
+    /**
      * @param string       $url
      * @param string       $title
      * @param UrlGenerator $routing
+     * @param Config       $config
      */
-    public function __construct($url, $title, UrlGenerator $routing)
+    public function __construct($url, $title, UrlGenerator $routing, Config $config)
     {
         $this->url     = $url;
         $this->title   = $title;
         $this->routing = $routing;
+        $this->config  = $config;
     }
 
     /**
@@ -44,11 +51,13 @@ class CrumbsItem
      */
     public function active($attr = true)
     {
+        $className = $this->config->get('crumbs.currentItemClass');
+
         if ($attr) {
-            return $this->isActive() ? 'class="' . config('crumbs.currentItemClass') . '"' : '';
+            return $this->isActive() ? 'class="' . $className . '"' : '';
         }
 
-        return $this->isActive() ? config('crumbs.currentItemClass') : '';
+        return $this->isActive() ? $className : '';
     }
 
     /**
@@ -58,7 +67,7 @@ class CrumbsItem
      */
     public function isActive()
     {
-        return $this->url == URL::current();
+        return $this->url == $this->routing->current();
     }
 
     /**

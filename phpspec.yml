@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: Atorscho\Crumbs
+        psr4_prefix: Atorscho\Crumbs
+        src_path: src
