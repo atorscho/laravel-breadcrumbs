@@ -48,7 +48,6 @@ class CrumbsItem
             return $this->isActive() ? 'class="' . config('crumbs.currentItemClass') . '"' : '';
         }
 
-
         return $this->isActive() ? config('crumbs.currentItemClass') : '';
     }
 
