@@ -100,6 +100,14 @@ To output generated breadcrumbs into your blade template, simply use new custom 
 <h1>Welcome!</h1>
 ```
 
+If you need to localize configuration strings, you need to surround them with `{}`.
+
+```
+e.g. '{labels.home}' => trans('labels.home') => 'Home'
+```
+
+This way you can bypass Laravel's limitation with functions in config files.
+
 ## API
 
 Documentation for most improtant methods.

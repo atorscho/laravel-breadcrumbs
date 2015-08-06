@@ -14,7 +14,9 @@ return [
     | Default: crumbs::crumbs-bootstrap3
     |
     */
+
     'crumbsView'       => 'crumbs::crumbs-semanticui',
+
     /*
     |--------------------------------------------------------------------------
     | Current Crumb Item Class
@@ -23,7 +25,9 @@ return [
     | If you need to change the class name of current breadcrumb item.
     |
     */
+
     'currentItemClass' => 'active',
+
     /*
     |--------------------------------------------------------------------------
     | Default Pages
@@ -36,11 +40,13 @@ return [
     | Admin pattern is used to show its breadcrumb only when needed.
     |
     */
-    'homeTitle'        => '{labels.home}',
+
+    'homeTitle'        => 'Home',
     'homeUrl'          => 'home',
-    'adminTitle'       => '{labels.admin}',
+    'adminTitle'       => 'Admin',
     'adminUrl'         => 'admin.index',
     'adminPattern'     => 'admin*',
+
     /*
     |--------------------------------------------------------------------------
     | Display Default Crumbs Items
@@ -57,8 +63,9 @@ return [
     | Specify the `adminPattern` to display its item only when appropriate.
     |
     */
+
     'displayHomePage'  => true,
     'displayAdminPage' => true,
-    'displayBothPages' => false,
+    'displayBothPages' => false
 
 ];
