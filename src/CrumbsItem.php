@@ -1,4 +1,6 @@
-<?php namespace Atorscho\Crumbs;
+<?php
+
+namespace Atorscho\Crumbs;
 
 use Atorscho\Crumbs\Exceptions\PropertyNotFoundException;
 use Illuminate\Routing\UrlGenerator;
@@ -6,7 +8,6 @@ use URL;
 
 class CrumbsItem
 {
-
     /**
      * @var string
      */
@@ -27,7 +28,7 @@ class CrumbsItem
      * @param string       $title
      * @param UrlGenerator $routing
      */
-    public function __construct( $url, $title, UrlGenerator $routing )
+    public function __construct($url, $title, UrlGenerator $routing)
     {
         $this->url     = $url;
         $this->title   = $title;
@@ -41,7 +42,7 @@ class CrumbsItem
      *
      * @return string
      */
-    public function active( $attr = true )
+    public function active($attr = true)
     {
         if ($attr) {
             return $this->isActive() ? 'class="' . config('crumbs.currentItemClass') . '"' : '';
@@ -69,7 +70,7 @@ class CrumbsItem
      * @return mixed
      * @throws PropertyNotFoundException
      */
-    public function __get( $property )
+    public function __get($property)
     {
         if (array_key_exists($property, get_class_vars(__CLASS__))) {
             return $this->{$property};
@@ -77,5 +78,4 @@ class CrumbsItem
 
         throw new PropertyNotFoundException("Property [$property] not found in class [" . __CLASS__ . '].');
     }
-
 }

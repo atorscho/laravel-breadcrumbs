@@ -38,8 +38,8 @@ class Crumbs
     public function __construct(Request $request, Router $route, UrlGenerator $url)
     {
         $this->request = $request;
-        $this->route = $route;
-        $this->url = $url;
+        $this->route   = $route;
+        $this->url     = $url;
 
         $this->autoAddItems();
     }

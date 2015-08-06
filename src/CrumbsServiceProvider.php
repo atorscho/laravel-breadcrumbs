@@ -1,4 +1,6 @@
-<?php namespace Atorscho\Crumbs;
+<?php
+
+namespace Atorscho\Crumbs;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
@@ -7,7 +9,6 @@ use Blade;
 
 class CrumbsServiceProvider extends ServiceProvider
 {
-
     /**
      * Bootstrap the application services.
      *
@@ -41,7 +42,7 @@ class CrumbsServiceProvider extends ServiceProvider
      */
     protected function registerFacades()
     {
-        $this->app->bind('crumbs', function ( Application $app ) {
+        $this->app->bind('crumbs', function (Application $app) {
             return $app->make('Atorscho\Crumbs\Crumbs');
         });
     }
@@ -90,8 +91,6 @@ class CrumbsServiceProvider extends ServiceProvider
             __DIR__ . '/../config/crumbs.php' => config_path('crumbs.php')
         ], 'config');
 
-        $this->mergeConfigFrom(
-            __DIR__ . '/../config/crumbs.php', 'crumbs'
-        );
+        $this->mergeConfigFrom(__DIR__ . '/../config/crumbs.php', 'crumbs');
     }
 }

@@ -1,10 +1,11 @@
-<?php namespace Atorscho\Crumbs;
+<?php
+
+namespace Atorscho\Crumbs;
 
 use Illuminate\Support\Facades\Facade;
 
 class CrumbsFacade extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *
@@ -14,5 +15,4 @@ class CrumbsFacade extends Facade
     {
         return 'crumbs';
     }
-
 }
