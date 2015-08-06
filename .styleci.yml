@@ -1,4 +1,9 @@
 preset: psr2
 
 enabled:
+  - align_double_arrow
   - align_equals
+  - ereg_to_preg
+  - whitespacy_lines
+  - ordered_use
+  - short_array_syntax

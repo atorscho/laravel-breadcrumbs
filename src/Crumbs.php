@@ -1,4 +1,6 @@
-<?php namespace Atorscho\Crumbs;
+<?php
+
+namespace Atorscho\Crumbs;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
@@ -6,7 +8,6 @@ use Illuminate\Routing\UrlGenerator;
 
 class Crumbs
 {
-
     /**
      * The array of breadcrumb items.
      *
@@ -37,8 +38,8 @@ class Crumbs
     public function __construct(Request $request, Router $route, UrlGenerator $url)
     {
         $this->request = $request;
-        $this->route   = $route;
-        $this->url     = $url;
+        $this->route = $route;
+        $this->url = $url;
 
         $this->autoAddItems();
     }
@@ -162,7 +163,7 @@ class Crumbs
     }
 
     /**
-     * Return a named route if it exists
+     * Return a named route if it exists.
      *
      * @param string $url
      * @param array  $parameters
@@ -228,5 +229,4 @@ class Crumbs
 
         return $title;
     }
-
 }
