@@ -1,28 +1,28 @@
 {
-	"name": "atorscho/crumbs",
-	"description": "Breadcrumbs package for Laravel 5.",
-	"keywords": [
-		"breadcrumbs",
-		"crumbs",
-		"navigation",
-		"laravel"
-	],
-	"type": "package",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Alex Torscho",
-			"email": "contact@alextorscho.com"
-		}
-	],
-	"require": {
-		"php": ">=5.5.9",
-		"illuminate/support": "5.0 - 5.1"
-	},
-	"autoload": {
-		"psr-4": {
-			"Atorscho\\Crumbs\\": "src/"
-		}
-	},
-	"minimum-stability": "stable"
+    "name": "atorscho/crumbs",
+    "description": "Breadcrumbs package for Laravel 5.",
+    "keywords": [
+        "breadcrumbs",
+        "crumbs",
+        "navigation",
+        "laravel"
+    ],
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Torscho",
+            "email": "contact@alextorscho.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.0 - 5.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atorscho\\Crumbs\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
 }

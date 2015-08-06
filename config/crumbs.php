@@ -36,9 +36,9 @@ return [
     | Admin pattern is used to show its breadcrumb only when needed.
     |
     */
-    'homeTitle'        => 'Homepage',
+    'homeTitle'        => '{labels.home}',
     'homeUrl'          => 'home',
-    'adminTitle'       => 'Admin',
+    'adminTitle'       => '{labels.admin}',
     'adminUrl'         => 'admin.index',
     'adminPattern'     => 'admin*',
     /*

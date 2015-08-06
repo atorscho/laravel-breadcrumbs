@@ -12,7 +12,7 @@ class Crumbs
      *
      * @var array
      */
-    protected $crumbs = [ ];
+    protected $crumbs = [];
 
     /**
      * @var Router
@@ -34,7 +34,7 @@ class Crumbs
      * @param Router       $route
      * @param UrlGenerator $url
      */
-    public function __construct( Request $request, Router $route, UrlGenerator $url )
+    public function __construct(Request $request, Router $route, UrlGenerator $url)
     {
         $this->request = $request;
         $this->route   = $route;
@@ -50,9 +50,9 @@ class Crumbs
      * @param string $title
      * @param array  $parameters
      */
-    public function add( $url, $title, $parameters = [ ] )
+    public function add($url, $title, $parameters = [])
     {
-        $url = $this->evaluateLink($url, $parameters);
+        $url = $this->parseUrl($url, $parameters);
 
         $this->crumbs[] = new CrumbsItem($url, $title, $this->url);
     }
@@ -62,7 +62,7 @@ class Crumbs
      *
      * @param string $title
      */
-    public function addCurrent( $title )
+    public function addCurrent($title)
     {
         $this->add($this->url->current(), $title);
     }
@@ -74,7 +74,7 @@ class Crumbs
      */
     public function addHomePage()
     {
-        $this->add(config('crumbs.homeUrl'), config('crumbs.homeTitle'));
+        $this->add(config('crumbs.homeUrl'), $this->parseConfigLocalization(config('crumbs.homeTitle')));
     }
 
     /**
@@ -84,7 +84,7 @@ class Crumbs
      */
     public function addAdminPage()
     {
-        $this->add(config('crumbs.adminUrl'), config('crumbs.adminTitle'));
+        $this->add(config('crumbs.adminUrl'), $this->parseConfigLocalization(config('crumbs.adminTitle')));
     }
 
     /**
@@ -98,8 +98,7 @@ class Crumbs
             return false;
         }
 
-
-        return view(config('crumbs.crumbsView'), [ 'crumbs' => $this->crumbs ])->render();
+        return view(config('crumbs.crumbsView'), ['crumbs' => $this->crumbs])->render();
     }
 
     /**
@@ -170,7 +169,7 @@ class Crumbs
      *
      * @return string
      */
-    protected function evaluateLink( $url, $parameters )
+    protected function parseUrl($url, $parameters)
     {
         // If provided $url is a route name...
         if ($this->route->has($url)) {
@@ -203,6 +202,31 @@ class Crumbs
                 $this->addAdminPage();
             }
         }
+    }
+
+    /**
+     * Parse configuration strings.
+     *
+     * To specify a translation in a config file, use {file.trans} format.
+     *
+     * e.g. {labels.home} => trans('labels.home') => Home
+     *
+     * @param string $string
+     *
+     * @return string
+     */
+    protected function parseConfigLocalization($string)
+    {
+        $title   = config('crumbs.homeTitle');
+        $pattern = '/^\{(.+)\}$/';
+
+        if (preg_match($pattern, $title)) {
+            $title = trans(preg_replace($pattern, '$1', $title));
+
+            return $title;
+        }
+
+        return $title;
     }
 
 }
