@@ -2,10 +2,10 @@
 
 namespace Atorscho\Crumbs;
 
+use Blade;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Blade;
 
 class CrumbsServiceProvider extends ServiceProvider
 {
