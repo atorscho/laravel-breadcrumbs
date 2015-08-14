@@ -7,12 +7,14 @@
         "navigation",
         "laravel"
     ],
-    "type": "package",
+    "homepage": "http://alextorscho.com/articles/crumbs-breadcrumbs-package-for-laravel",
     "license": "MIT",
     "authors": [
         {
             "name": "Alex Torscho",
-            "email": "contact@alextorscho.com"
+            "email": "contact@alextorscho.com",
+            "homepage": "http://alextorscho.com",
+            "role": "Developer"
         }
     ],
     "require": {
