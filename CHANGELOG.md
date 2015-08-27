@@ -2,7 +2,7 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
-## NEXT - 2.1.4 [2015-08-27]
+## 2.1.4 [2015-08-27]
 
 ### Added
 - Semantic UI and Twitter Bootstrap views with microdatas.
