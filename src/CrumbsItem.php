@@ -45,13 +45,16 @@ class CrumbsItem
     /**
      * Return current crumb item class name when needed.
      *
-     * @param bool $attr If true, it will return `class="active"`.
+     * @param bool   $attr      If true, it will return `class="active"`.
+     * @param string $className Active item class. Default: 'active'
      *
      * @return string
      */
-    public function active($attr = true)
+    public function active($attr = true, $className = '')
     {
-        $className = $this->config->get('crumbs.currentItemClass');
+        if (!$className) {
+            $className = $this->config->get('crumbs.currentItemClass');
+        }
 
         if ($attr) {
             return $this->isActive() ? 'class="' . $className . '"' : '';
