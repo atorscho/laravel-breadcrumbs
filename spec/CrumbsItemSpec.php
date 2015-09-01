@@ -66,7 +66,7 @@ class CrumbsItemSpec extends ObjectBehavior
         $this->active(false)->shouldReturn('active');
     }
 
-    public function it_throws_an_exception_when_called_to_inexisting_property()
+    public function it_throws_an_exception_when_an_inexisting_property_is_called()
     {
         $this->shouldThrow(\Atorscho\Crumbs\Exceptions\PropertyNotFoundException::class)->during('__get', ['someProperty']);
     }

@@ -64,13 +64,39 @@ class CrumbsItem
     }
 
     /**
-     * Return true if breadcrumb item is active.
+     * Return disabled class name when needed.
+     *
+     * @param string $className
+     *
+     * @return mixed|string
+     */
+    public function disabled($className = '')
+    {
+        if (!$className) {
+            $className = $this->config->get('crumbs.disabledItemClass');
+        }
+
+        return $this->isDisabled() ? $className : '';
+    }
+
+    /**
+     * Return true if current breadcrumb item is active.
      *
      * @return bool
      */
     public function isActive()
     {
         return $this->url == $this->routing->current();
+    }
+
+    /**
+     * Return true if current breadcrumb item is disabled.
+     *
+     * @return bool
+     */
+    public function isDisabled()
+    {
+        return $this->url == '#';
     }
 
     /**

@@ -2,6 +2,12 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
+## NEXT - 2.1.5
+
+### Added
+- `CrumbsItem`: disabled state.
+
+
 ## 2.1.4 [2015-08-27]
 
 ### Added
