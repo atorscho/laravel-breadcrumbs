@@ -65,8 +65,8 @@ class CrumbsServiceProvider extends ServiceProvider
      */
     protected function registerBladeExtension()
     {
-        Blade::directive('crumbs', function () {
-            return '<?php echo Crumbs::render(); ?>';
+        Blade::directive('crumbs', function ($view = '') {
+            return "<?php echo Crumbs::render({$view}); ?>";
         });
     }
 

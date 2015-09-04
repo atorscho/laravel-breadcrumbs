@@ -105,15 +105,23 @@ class Crumbs
     /**
      * Render breadcrumbs HTML.
      *
-     * @return string|bool
+     * @param string $view Custom breadcrumbs template view.
+     *
+     * @return string Breadcrumbs template with all items
      */
-    public function render()
+    public function render($view = '')
     {
+        // Check for existing crumbs items
         if (!$this->hasItems()) {
-            return false;
+            return '';
         }
 
-        return view($this->config->get('crumbs.crumbsView'), ['crumbs' => $this->getCrumbs()])->render();
+        // Check for custom view
+        if (!$view) {
+            $view = $this->config->get('crumbs.crumbsView');
+        }
+
+        return view($view, ['crumbs' => $this->getCrumbs()])->render();
     }
 
     /**
