@@ -2,7 +2,7 @@
 	@foreach ($crumbs as $crumb)
 		<li class="{{ $crumb->active(false, 'current') }} {{ $crumb->disabled('unavailable') }}">
 			<a href="{{ $crumb->url }}">
-				{{ $crumb->title }}
+				{!! $crumb->title !!}
 			</a>
 		</li>
 	@endforeach

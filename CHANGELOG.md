@@ -6,7 +6,18 @@ All Notable changes to `crumbs` will be documented in this file.
 
 ### Added
 - `CrumbsItem`: disabled state.
+- Foundation Framework template views.
 
+### Modified
+- `Crumbs::render` and `@crumbs`: now take an optional `$view` parameter.
+- Semantic UI views have a new separator.
+- Template views now unescape titles so you may pass an icon with/instead of the string.
+
+### Fixed
+- Semantic UI views.
+
+### Removed
+- `Crumbs::parseConfigLocalization()` removed from the class.
 
 ## 2.1.4 [2015-08-27]
 
@@ -14,7 +25,6 @@ All Notable changes to `crumbs` will be documented in this file.
 - Semantic UI and Twitter Bootstrap views with microdatas.
 
 ### Modified
-- `README.md` updated.
 - `CrumbsItem::active()` got a new parameter `className` to change the active item class name.
 
 
@@ -35,7 +45,7 @@ All Notable changes to `crumbs` will be documented in this file.
 
 ### Fixed
 - Problem with localized strings in config file.
-- Bug detecting admin pages if URL has some prefixes (for example '/en/admin').
+- Bug detecting admin pages if URL has some prefixes (for example `'/en/admin'`).
 
 
 ## 2.0.0 - 2.1.1 [2015-05-13 - 2015-06-15]
