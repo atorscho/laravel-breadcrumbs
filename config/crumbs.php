@@ -8,7 +8,6 @@ return [
     |--------------------------------------------------------------------------
     |
     | You can select which breadcrumb template you want to use.
-    | Choose between `crumbs::crumbs-bootstrap3` and `crumbs::crumbs-semanticui`.
     | You may also use your own view.
     |
     | Default: crumbs::crumbs-semanticui
