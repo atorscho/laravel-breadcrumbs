@@ -89,7 +89,7 @@ class Crumbs
      */
     public function addHomePage()
     {
-        $this->add($this->config->get('crumbs.homeUrl'), $this->parseConfigLocalization($this->config->get('crumbs.homeTitle')));
+        $this->add($this->config->get('crumbs.homeUrl'), $this->config->get('crumbs.homeTitle'));
     }
 
     /**
@@ -99,7 +99,7 @@ class Crumbs
      */
     public function addAdminPage()
     {
-        $this->add($this->config->get('crumbs.adminUrl'), $this->parseConfigLocalization($this->config->get('crumbs.adminTitle')));
+        $this->add($this->config->get('crumbs.adminUrl'), $this->config->get('crumbs.adminTitle'));
     }
 
     /**
@@ -217,27 +217,5 @@ class Crumbs
                 $this->addAdminPage();
             }
         }
-    }
-
-    /**
-     * Parse configuration strings.
-     *
-     * To specify a translation in a config file, use {file.trans} format.
-     *
-     * e.g. {labels.home} => trans('labels.home') => Home
-     *
-     * @param string $string
-     *
-     * @return string
-     */
-    protected function parseConfigLocalization($string)
-    {
-        $pattern = '/^\{(.+)\}$/';
-
-        if (preg_match($pattern, $string)) {
-            $string = $this->translator->trans(preg_replace($pattern, '$1', $string));
-        }
-
-        return $string;
     }
 }
