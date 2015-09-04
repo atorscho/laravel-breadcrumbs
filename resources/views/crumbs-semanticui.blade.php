@@ -1,7 +1,7 @@
 <div class="ui breadcrumb">
 	@foreach ($crumbs as $crumb)
 		@if($crumb->isActive())
-			<div class="{{ $crumb->active(false) }} section">
+			<div class="active section">
 				{{ $crumb->title }}
 			</div>
 		@else
