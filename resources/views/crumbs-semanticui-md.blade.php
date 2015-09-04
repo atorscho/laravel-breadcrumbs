@@ -10,7 +10,7 @@
 				<span itemprop="name">{{ $crumb->title }}</span>
 				<meta itemprop="position" content="{{ $i + 1 }}" />
 			</a>
-			<div class="divider"> /</div>
+			<i class="right angle icon divider"></i>
 		@endif
 	@endforeach
 </div>
