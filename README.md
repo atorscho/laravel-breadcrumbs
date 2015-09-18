@@ -21,4 +21,4 @@ You can read the documentation on the [official site][link-docs].
 [link-packagist]: https://packagist.org/packages/atorscho/crumbs
 [link-downloads]: https://packagist.org/packages/atorscho/crumbs
 [link-styleci]: https://styleci.io/repos/26128680
-[link-docs]: http://alextorscho.com/articles/crumbs-breadcrumbs-package-for-laravel
+[link-docs]: http://alextorscho.com/docs/crumbs
