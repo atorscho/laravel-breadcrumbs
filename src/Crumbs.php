@@ -31,14 +31,16 @@ class Crumbs
      * @var Request
      */
     protected $request;
+
     /**
      * @var Config
      */
-    private $config;
+    protected $config;
+
     /**
      * @var Translator
      */
-    private $translator;
+    protected $translator;
 
     /**
      * @param Request      $request
@@ -64,42 +66,56 @@ class Crumbs
      * @param string $url
      * @param string $title
      * @param array  $parameters
+     *
+     * @return $this
      */
-    public function add($url, $title, $parameters = [])
+    public function add($url, $title = '', $parameters = [])
     {
+        if (is_array($url) && !$title) {
+            foreach ($url as $item) {
+                $this->add($item[0], $item[1], isset($item[2]) ? $item[2] : []);
+            }
+
+            return $this;
+        }
+
         $url = $this->parseUrl($url, $parameters);
 
         $this->crumbs[] = new CrumbsItem($url, $title, $this->url, $this->config);
+
+        return $this;
     }
 
     /**
      * Add current page to the breadcrumbs array.
      *
      * @param string $title
+     *
+     * @return $this
      */
     public function addCurrent($title)
     {
-        $this->add($this->url->current(), $title);
+        return $this->add($this->url->current(), $title);
     }
 
     /**
      * Add home page to the breadcrumbs array.
      *
-     * @return void
+     * @return $this
      */
     public function addHomePage()
     {
-        $this->add($this->config->get('crumbs.homeUrl'), $this->config->get('crumbs.homeTitle'));
+        return $this->add($this->config->get('crumbs.homeUrl'), $this->config->get('crumbs.homeTitle'));
     }
 
     /**
      * Add admin page to the breadcrumbs array.
      *
-     * @return void
+     * @return $this
      */
     public function addAdminPage()
     {
-        $this->add($this->config->get('crumbs.adminUrl'), $this->config->get('crumbs.adminTitle'));
+        return $this->add($this->config->get('crumbs.adminUrl'), $this->config->get('crumbs.adminTitle'));
     }
 
     /**
@@ -107,7 +123,7 @@ class Crumbs
      *
      * @param string $view Custom breadcrumbs template view.
      *
-     * @return string Breadcrumbs template with all items
+     * @return string Breadcrumbs template with all items.
      */
     public function render($view = '')
     {

@@ -2,7 +2,19 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
-## NEXT - 2.1.5
+## NEXT - 2.1.6
+
+### Added
+- `Crumbs::add()` now takes an array of breadcrumbs items as parameter:
+
+``` php
+Crumbs::add([
+	['main', 'Main Section'],
+	['main/sub', 'Sub-section']
+]);
+```
+
+## 2.1.5 [2015-09-04]
 
 ### Added
 - `CrumbsItem`: disabled state.

@@ -22,6 +22,7 @@ class CrumbsSpec extends ObjectBehavior
      * @var \Mockery\MockInterface
      */
     protected $routeMock;
+
     /**
      * @var \Mockery\MockInterface
      */
