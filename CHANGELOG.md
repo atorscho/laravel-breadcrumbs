@@ -2,7 +2,7 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
-## NEXT - 2.1.6
+## 2.1.6 [2015-12-24]
 
 ### Added
 - New helper function `crumbs()`:
