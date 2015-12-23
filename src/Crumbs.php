@@ -20,7 +20,7 @@ class Crumbs
     /**
      * @var Router
      */
-    protected $router;
+    protected $route;
 
     /**
      * @var UrlGenerator
