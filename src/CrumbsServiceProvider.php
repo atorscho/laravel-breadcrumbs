@@ -16,6 +16,8 @@ class CrumbsServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        require __DIR__ . '/helpers.php';
+
         $this->registerViews();
 
         $this->registerConfigs();
