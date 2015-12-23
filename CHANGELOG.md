@@ -5,14 +5,14 @@ All Notable changes to `crumbs` will be documented in this file.
 ## NEXT - 2.1.6
 
 ### Added
-- `Crumbs::add()` now takes an array of breadcrumbs items as parameter:
+- New helper function `crumbs()`:
 
 ``` php
-Crumbs::add([
-	['main', 'Main Section'],
-	['main/sub', 'Sub-section']
-]);
+crumbs('/home', 'Home Page')->add('/categories', 'Categories')->add('Main Category');
 ```
+
+### Modified
+- `Crumbs::add()` now adds current page (its alias `Crumbs::addCurrent()`) if only {$url} specified.
 
 ## 2.1.5 [2015-09-04]
 
