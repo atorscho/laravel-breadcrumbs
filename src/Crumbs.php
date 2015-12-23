@@ -71,12 +71,9 @@ class Crumbs
      */
     public function add($url, $title = '', $parameters = [])
     {
-        if (is_array($url) && !$title) {
-            foreach ($url as $item) {
-                $this->add($item[0], $item[1], isset($item[2]) ? $item[2] : []);
-            }
-
-            return $this;
+        // If only {$url} specified, use it as title for current page
+        if (func_num_args() === 1) {
+            return $this->addCurrent($url);
         }
 
         $url = $this->parseUrl($url, $parameters);
