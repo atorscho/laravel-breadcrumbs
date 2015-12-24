@@ -20,5 +20,5 @@ if (!function_exists('crumbs')) {
         }
 
         return Crumbs::add($url, $title, $parameters);
-	}
+    }
 }
