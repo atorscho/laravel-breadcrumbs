@@ -8,6 +8,12 @@ use Illuminate\Routing\Router;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Translation\Translator;
 
+/**
+ * Atorscho\Crumbs\Crumbs
+ *
+ * @package Atorscho\Crumbs
+ * @version 2.1.6
+ */
 class Crumbs
 {
     /**

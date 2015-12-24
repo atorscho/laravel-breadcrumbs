@@ -6,6 +6,15 @@ use Atorscho\Crumbs\Exceptions\PropertyNotFoundException;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Routing\UrlGenerator;
 
+/**
+ * Atorscho\Crumbs\CrumbsItem
+ *
+ * @property string $title    Item title.
+ * @property string $url      Item URL.
+ *
+ * @package Atorscho\Crumbs
+ * @version 2.1.6
+ */
 class CrumbsItem
 {
     /**
