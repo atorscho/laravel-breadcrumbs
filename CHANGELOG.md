@@ -2,7 +2,7 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
-## NEXT -  2.1.7
+## 2.1.7 [2015-12-27]
 
 ### Added
 - New `Crumbs::pageTitle()` method which outputs a structured page title.
