@@ -62,7 +62,7 @@ class CrumbsItem
     public function active($attr = true, $className = '')
     {
         if (!$className) {
-            $className = $this->config->get('crumbs.currentItemClass');
+            $className = $this->config->get('crumbs.current_item_class');
         }
 
         if ($attr) {
@@ -82,7 +82,7 @@ class CrumbsItem
     public function disabled($className = '')
     {
         if (!$className) {
-            $className = $this->config->get('crumbs.disabledItemClass');
+            $className = $this->config->get('crumbs.disabled_item_class');
         }
 
         return $this->isDisabled() ? $className : '';

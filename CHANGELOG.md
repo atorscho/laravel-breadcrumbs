@@ -2,6 +2,15 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
+## NEXT -  2.1.7
+
+### Added
+- New `Crumbs::pageTitle()` method which outputs a structured page title.
+
+### Modified
+- The "crumbs-" prefix from views has been removed.
+- Configuration file options have been snaked_cased.
+
 ## 2.1.6 [2015-12-24]
 
 ### Added

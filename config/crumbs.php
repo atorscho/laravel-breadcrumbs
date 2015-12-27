@@ -10,11 +10,16 @@ return [
     | You can select which breadcrumb template you want to use.
     | You may also use your own view.
     |
-    | Default: crumbs::crumbs-semanticui
+    | The "-md" variant includes a MicroData structure.
+    |
+    | Default: crumbs::semanticui
+    |
+    | Views: bootstrap3(-md), foundation-nav(-md),
+    |        foundation-ul(-md), semanticui(-md)
     |
     */
 
-    'crumbsView' => 'crumbs::crumbs-semanticui',
+    'crumbs_view' => 'crumbs::semanticui',
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +30,7 @@ return [
     |
     */
 
-    'currentItemClass' => 'active',
+    'current_item_class' => 'active',
 
     /*
     |--------------------------------------------------------------------------
@@ -37,7 +42,7 @@ return [
     |
     */
 
-    'disabledItemClass' => 'disabled',
+    'disabled_item_class' => 'disabled',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,11 +57,11 @@ return [
     |
     */
 
-    'homeTitle'    => 'Home',
-    'homeUrl'      => 'home',
-    'adminTitle'   => 'Admin',
-    'adminUrl'     => 'admin.index',
-    'adminPattern' => '*admin*',
+    'home_title'    => 'Home',
+    'home_url'      => 'home',
+    'admin_title'   => 'Admin',
+    'admin_url'     => 'admin.index',
+    'admin_Pattern' => '*admin*',
 
     /*
     |--------------------------------------------------------------------------
@@ -67,16 +72,28 @@ return [
     | or both.
     |
     | Examples:
-    | If `displayHomePage` == true: 'Home' > 'Main Section' > 'Sub Section'.
-    | If `displayAdminPage` == true: 'Admin' > 'Main Section' > 'Sub Section'.
-    | If `displayBothPages` == true: 'Home' > 'Admin' > 'Main Section' > 'Sub Section'.
+    | If `display_home_page` == true: 'Home' > 'Main Section' > 'Sub Section'.
+    | If `display_admin_page` == true: 'Admin' > 'Main Section' > 'Sub Section'.
+    | If `display_both_pages` == true: 'Home' > 'Admin' > 'Main Section' > 'Sub Section'.
     |
-    | Specify the `adminPattern` to display its item only when appropriate.
+    | Specify the `admin_Pattern` to display its item only when appropriate.
     |
     */
 
-    'displayHomePage'  => true,
-    'displayAdminPage' => true,
-    'displayBothPages' => false
+    'display_home_page'  => true,
+    'display_admin_page' => true,
+    'display_both_pages' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Page Title Separator
+    |--------------------------------------------------------------------------
+    |
+    | Crumbs includes a feature for displaying page titles.
+    | Here you may define its separator.
+    |
+    */
+
+    'page_title_separator' => ' &raquo; '
 
 ];

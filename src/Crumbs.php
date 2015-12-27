@@ -55,8 +55,13 @@ class Crumbs
      * @param Config       $config
      * @param Translator   $translator
      */
-    public function __construct(Request $request, Router $route, UrlGenerator $url, Config $config, Translator $translator)
-    {
+    public function __construct(
+        Request $request,
+        Router $route,
+        UrlGenerator $url,
+        Config $config,
+        Translator $translator
+    ) {
         $this->request    = $request;
         $this->route      = $route;
         $this->url        = $url;
@@ -108,7 +113,7 @@ class Crumbs
      */
     public function addHomePage()
     {
-        return $this->add($this->config->get('crumbs.homeUrl'), $this->config->get('crumbs.homeTitle'));
+        return $this->add($this->config->get('crumbs.home_url'), $this->config->get('crumbs.home_title'));
     }
 
     /**
@@ -118,7 +123,27 @@ class Crumbs
      */
     public function addAdminPage()
     {
-        return $this->add($this->config->get('crumbs.adminUrl'), $this->config->get('crumbs.adminTitle'));
+        return $this->add($this->config->get('crumbs.admin_url'), $this->config->get('crumbs.admin_title'));
+    }
+
+    /**
+     * Return structured page title string.
+     *
+     * @return string
+     *
+     * @since 2.1.7
+     */
+    public function pageTitle()
+    {
+        // Get crumbs titles
+        $crumbs = array_map(function ($crumb) {
+            return $crumb->title;
+        }, $this->crumbs);
+
+        // Reverse array elements order
+        $crumbs = array_reverse($crumbs);
+
+        return implode($this->config->get('crumbs.page_title_separator'), $crumbs);
     }
 
     /**
@@ -137,7 +162,7 @@ class Crumbs
 
         // Check for custom view
         if (!$view) {
-            $view = $this->config->get('crumbs.crumbsView');
+            $view = $this->config->get('crumbs.crumbs_view');
         }
 
         return view($view, ['crumbs' => $this->getCrumbs()])->render();
@@ -230,19 +255,31 @@ class Crumbs
      */
     protected function autoAddItems()
     {
-        if ($this->config->get('crumbs.displayBothPages')) {
+        if ($this->config->get('crumbs.display_both_pages')) {
             $this->addHomePage();
 
-            if ($this->request->is($this->config->get('crumbs.adminPattern'))) {
+            if ($this->request->is($this->config->get('crumbs.admin_Pattern'))) {
                 $this->addAdminPage();
             }
         } else {
-            if ($this->config->get('crumbs.displayHomePage') && !$this->request->is($this->config->get('crumbs.adminPattern'))) {
+            if ($this->config->get('crumbs.display_home_page') && !$this->request->is($this->config->get('crumbs.admin_Pattern'))) {
                 $this->addHomePage();
             }
-            if ($this->config->get('crumbs.displayAdminPage') && $this->request->is($this->config->get('crumbs.adminPattern'))) {
+            if ($this->config->get('crumbs.display_admin_page') && $this->request->is($this->config->get('crumbs.admin_Pattern'))) {
                 $this->addAdminPage();
             }
         }
+    }
+
+    /**
+     * Return an instance of Crumbs.
+     *
+     * @return $this
+     *
+     * @since 2.1.7
+     */
+    public function getInstance()
+    {
+        return $this;
     }
 }

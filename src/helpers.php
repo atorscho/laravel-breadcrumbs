@@ -14,7 +14,7 @@ if (!function_exists('crumbs')) {
     function crumbs($url = '', $title = '', $parameters = [])
     {
         if (func_num_args() === 0) {
-            return app('crumbs');
+            return Crumbs::getInstance();
         } elseif (func_num_args() === 1) {
             return Crumbs::addCurrent($url);
         }
