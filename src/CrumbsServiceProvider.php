@@ -32,33 +32,15 @@ class CrumbsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerFacades();
-
-        $this->registerAliases();
-    }
-
-    /**
-     * Register New Custom Facades.
-     *
-     * @return void
-     */
-    protected function registerFacades()
-    {
+        // Register Crumbs
         $this->app->bind('crumbs', function (Application $app) {
-            return $app->make('Atorscho\Crumbs\Crumbs');
+            return $app->make(Crumbs::class);
         });
-    }
 
-    /**
-     * Register New Custom Aliases.
-     *
-     * @return void
-     */
-    protected function registerAliases()
-    {
+        // Register an Alias
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
-            $loader->alias('Crumbs', 'Atorscho\Crumbs\CrumbsFacade');
+            $loader->alias('Crumbs', CrumbsFacade::class);
         });
     }
 
