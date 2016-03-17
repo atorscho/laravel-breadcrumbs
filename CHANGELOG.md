@@ -2,6 +2,11 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
+## 2.2.0 [2016-03-17]
+
+### Added
+- Laravel 5.2 Support. (Thanks to [pionl](https://github.com/pionl))
+
 ## 2.1.7 [2015-12-27]
 
 ### Added
