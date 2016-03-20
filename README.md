@@ -16,7 +16,7 @@ You can read the documentation on the [official site][link-docs].
 [ico-version]: https://img.shields.io/github/release/atorscho/crumbs.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/atorscho/crumbs.svg?style=flat-square
-[ico-styleci]: https://styleci.io/repos/26128680/shield
+[ico-styleci]: https://styleci.io/repos/26128680/shield?style=flat
 
 [link-packagist]: https://packagist.org/packages/atorscho/crumbs
 [link-downloads]: https://packagist.org/packages/atorscho/crumbs
