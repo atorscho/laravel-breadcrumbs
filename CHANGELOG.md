@@ -2,6 +2,11 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
+## 2.2.1 [2016-04-03]
+
+### Added
+- `Crumbs::pageTitle()` now takes a `$appends` argument which appends a string to the title.
+
 ## 2.2.0 [2016-03-17]
 
 ### Added

@@ -129,11 +129,13 @@ class Crumbs
     /**
      * Return structured page title string.
      *
+     * @param string $appends A string to append.
+     *
      * @return string
      *
      * @since 2.1.7
      */
-    public function pageTitle()
+    public function pageTitle($appends = '')
     {
         // Get crumbs titles
         $crumbs = array_map(function ($crumb) {
@@ -142,8 +144,9 @@ class Crumbs
 
         // Reverse array elements order
         $crumbs = array_reverse($crumbs);
+        $title = implode($this->config->get('crumbs.page_title_separator'), $crumbs);
 
-        return implode($this->config->get('crumbs.page_title_separator'), $crumbs);
+        return $title . ($title ? $appends : '');
     }
 
     /**
