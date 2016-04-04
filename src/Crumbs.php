@@ -261,14 +261,14 @@ class Crumbs
         if ($this->config->get('crumbs.display_both_pages')) {
             $this->addHomePage();
 
-            if ($this->request->is($this->config->get('crumbs.admin_Pattern'))) {
+            if ($this->request->is($this->config->get('crumbs.admin_pattern'))) {
                 $this->addAdminPage();
             }
         } else {
-            if ($this->config->get('crumbs.display_home_page') && !$this->request->is($this->config->get('crumbs.admin_Pattern'))) {
+            if ($this->config->get('crumbs.display_home_page') && !$this->request->is($this->config->get('crumbs.admin_pattern'))) {
                 $this->addHomePage();
             }
-            if ($this->config->get('crumbs.display_admin_page') && $this->request->is($this->config->get('crumbs.admin_Pattern'))) {
+            if ($this->config->get('crumbs.display_admin_page') && $this->request->is($this->config->get('crumbs.admin_pattern'))) {
                 $this->addAdminPage();
             }
         }

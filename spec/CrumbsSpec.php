@@ -8,7 +8,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Routing\UrlGenerator;
 use Illuminate\Translation\Translator;
 use Mockery;
-use PhpSpec\ObjectBehavior;
+use \PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class CrumbsSpec extends ObjectBehavior

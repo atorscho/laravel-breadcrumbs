@@ -53,6 +53,8 @@ return [
     |
     | Titles support HTML tags.
     |
+    | Admin URL may be a relative URL or a route name.
+    |
     | Admin pattern is used to show its breadcrumb only when needed.
     |
     */
@@ -61,7 +63,7 @@ return [
     'home_url'      => 'home',
     'admin_title'   => 'Admin',
     'admin_url'     => 'admin.index',
-    'admin_Pattern' => '*admin*',
+    'admin_pattern' => '*admin*',
 
     /*
     |--------------------------------------------------------------------------

@@ -2,6 +2,12 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
+## NEXT - 2.2.2
+
+### Modified
+- `admin_Pattern` config to `admin_pattern`.
+- Some changes to config comments.
+
 ## 2.2.1 [2016-04-03]
 
 ### Added
