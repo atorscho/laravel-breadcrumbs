@@ -144,7 +144,7 @@ class Crumbs
 
         // Reverse array elements order
         $crumbs = array_reverse($crumbs);
-        $title = implode($this->config->get('crumbs.page_title_separator'), $crumbs);
+        $title  = implode($this->config->get('crumbs.page_title_separator'), $crumbs);
 
         return $title . ($title ? $appends : '');
     }
