@@ -7,27 +7,29 @@ Simple and functional breadcrumbs package for Laravel 5.
 
 > [v1 branch][link-branch-v1] is for Laravel 4.
 
-### How To Use
-See the [documentation][link-howto] to learn how to use Crumbs.
+## Summary
 
-### Change log
+* [Installation](docs/installation.md)
+* [How To Use](docs/howto.md)
+
+## Change log
 
 Please see [CHANGELOG][link-changelog] for more information what has changed recently.
 
-### Contributing
+## Contributing
 
 Please see [CONTRIBUTING][link-contributing] for details.
 
-### Security
+## Security
 
 If you discover any security related issues, please contact me via the form below instead of using the issue tracker.
 
-### Credits
+## Credits
 
 - [Alex Torscho][link-author]
 - [All Contributors][link-contributors]
 
-### License
+## License
 
 The MIT License (MIT). Please see [License File][link-license] for more information.
 
