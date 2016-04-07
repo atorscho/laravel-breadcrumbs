@@ -1,5 +1,5 @@
 # Summary
 
 * [Installation](docs/installation.md)
-* How To Use
+* [How To Use](docs/howto.md)
 
