@@ -2,7 +2,10 @@
 
 All Notable changes to `crumbs` will be documented in this file.
 
-## NEXT - 2.2.2
+## 2.2.2 [2016-10-25]
+ 
+### Added
+- Support for Laravel 5.3.
 
 ### Modified
 - `admin_Pattern` config to `admin_pattern`.

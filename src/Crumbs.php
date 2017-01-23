@@ -12,7 +12,7 @@ use Illuminate\Translation\Translator;
  * Atorscho\Crumbs\Crumbs
  *
  * @package Atorscho\Crumbs
- * @version 2.1.6
+ * @version 2.2.2
  */
 class Crumbs
 {
