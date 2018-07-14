@@ -19,7 +19,7 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/support": "5.0 - 5.5"
+        "illuminate/support": "5.0 - 5.6"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
@@ -30,5 +30,12 @@
             "Atorscho\\Crumbs\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atorscho\\Crumbs\\CrumbsServiceProvider"
+            ]
+        }
+    }
 }
