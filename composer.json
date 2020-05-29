@@ -1,0 +1,44 @@
+{
+    "name": "atorscho/laravel-breadcrumbs",
+    "description": "Yet another simple and useful breadcrumbs package for Laravel 7.",
+    "version": "3.0.0",
+    "type": "library",
+    "keywords": [
+        "laravel",
+        "breadcrumbs",
+        "crumbs",
+        "navigation",
+        "ariane"
+    ],
+    "readme": "./readme.md",
+    "time": "2020-05-30",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Torscho",
+            "email": "contact@alextorscho.com",
+            "homepage": "https://alextorscho.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^7.0"
+    },
+    "replace": {
+        "atorscho/crumbs": "2.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atorscho\\Breadcrumbs\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atorscho\\Breadcrumbs\\BreadcrumbsServiceProvider"
+            ]
+        }
+    }
+}
