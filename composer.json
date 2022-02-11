@@ -1,40 +1,44 @@
 {
-    "name": "atorscho/crumbs",
-    "description": "Breadcrumbs package for Laravel 5.",
+    "name": "atorscho/laravel-breadcrumbs",
+    "description": "Yet another simple and useful breadcrumbs package for Laravel 7.",
+    "version": "3.0.0",
+    "type": "library",
     "keywords": [
+        "laravel",
         "breadcrumbs",
         "crumbs",
         "navigation",
-        "laravel"
+        "ariane"
     ],
-    "homepage": "https://alextorscho.com/docs/crumbs",
+    "readme": "./readme.md",
+    "time": "2020-05-30",
     "license": "MIT",
     "authors": [
         {
             "name": "Alex Torscho",
             "email": "contact@alextorscho.com",
-            "homepage": "http://alextorscho.com",
+            "homepage": "https://alextorscho.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.5.9",
         "illuminate/support": "^6 || ^7 || ^8 || ^9"
+        "php": "^7.4"
     },
-    "require-dev": {
-        "mockery/mockery": "0.9.*",
-        "phpspec/phpspec": "~2.1"
+    "replace": {
+        "atorscho/crumbs": "2.4.*"
     },
     "autoload": {
         "psr-4": {
-            "Atorscho\\Crumbs\\": "src/"
+            "Atorscho\\Breadcrumbs\\": "src/"
         }
     },
     "minimum-stability": "stable",
     "extra": {
         "laravel": {
             "providers": [
-                "Atorscho\\Crumbs\\CrumbsServiceProvider"
+                "Atorscho\\Breadcrumbs\\BreadcrumbsServiceProvider"
             ]
         }
     }
