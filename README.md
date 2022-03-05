@@ -3,6 +3,8 @@
 [![StyleCI][ico-styleci]][link-styleci]
 [![Software License][ico-license]][link-license]
 
+# **This package is no longer supported and is replaced with [atstudio-tech/breadcrumbs](https://github.com/atstudio-tech/breadcrumbs)**
+
 Simple and functional breadcrumbs package for Laravel 5.
 
 > [v1 branch][link-branch-v1] is for Laravel 4.
