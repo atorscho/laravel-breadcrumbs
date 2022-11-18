@@ -57,6 +57,7 @@ I do this:
 <h1>About {{{ $user->username }}}</h1>
 ```
 
+
 I use `function_exists()` in case I do not have Crumbs installed, just to be sure that nothing will be broken.
 
 That's all!
